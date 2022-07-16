@@ -1,0 +1,19 @@
+**Create custom AD Groups** 
+
+Ex. 
+'New-ADGroup -Name "ADGroup" -SamAccountName ADGroup -GroupCategory Security -GroupScope Global -DisplayName "AD Group" -Path "CN=User,DC=Domain,DC=Com" -Description "Admins in ADGroup"'
+'New-ADGroup -Name "ADGroupUsers" -SamAccountName ADGroup_Users -GroupCategory Security -GroupScope DomainLocal -DisplayName "AD Group Users" -Path "CN=User,DC=Domain,DC=Com" -Description "Users in ADGroup"'
+
+**Add Users**
+
+Ex.
+'New-ADUser -Name "Gunn, Tommy" -Accountpassword (Read-Host -AsSecureString "password" -SamAccount tgunn -Enabled $true'
+Enter Password Again
+
+**Add to Group**
+
+Ex.
+'Add-AdGroupMember -Identity [SAM Account Name of Group] AdGroup -Members [SAM Account Name for User] tgunn'
+Confirm User was added to the Group with 'Get-ADGroupMember -Identity "SG_PowerBi" | ft'
+*Brackets are not part of the command*
+
