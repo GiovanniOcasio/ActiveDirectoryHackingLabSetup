@@ -9,11 +9,13 @@ As a penetration tester, something a lot of recruiters are looking for is experi
 
 - <b>PowerShell</b> 
 - <b>VMware Workstation</b>
+- <b>Hardware</b>
 
 <h2>Environments Used </h2>
 
 - <b>Windows 10</b>
 - <b>Windows Server 2019</b>
+- <b>Ubuntu Server</b>
 
 
 <!--
