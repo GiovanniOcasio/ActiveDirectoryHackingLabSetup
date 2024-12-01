@@ -15,10 +15,8 @@ If not, use: 'sudo ip link set <network_interface> up'. <br />
 <p align="center">
 Run 'ip addr show' once more and it should look like this:
 <img src="/imgs/network_up.png"/>
-</p>
 Once this is done you can use: 'dchpcd network_interface' to request an new IP Address <br />
 Now let's configure a static IP address by editing the yaml file in /etc/netplan/ <br />
-<p align="center">
 It should look something like this the addresses portion should contain your perferred IP address and subnet mask <br />
 The via portion under route should contain your defaul gateway IP address:
 <img src="/imgs/netplan.png"/>
@@ -32,7 +30,23 @@ Then we need to install the following: 'sudo apt -y install realmd sssd sssd-too
 <img src="/imgs/install_pkgs.png"/>
 Once that's done we need to reconfigure the hostname of the server to match the domain. In my case: 'hostnamectl set-hostname ubuntu.ocasiosec.com'
 <img src="/imgs/ubuntu_hostname.png"/>
-  
+Ensure that Krb5 is installed: 'sudo apt-get install -y krb5-user sssd-krb5'
+<img src="/imgs/krb5.png"/>
+Now we need to disable our local DNS and configure Ubuntu to use the Domain Controller by editing the /etc/resolv.conf file:
+<img src="/imgs/disable_dns.png"/>
+Now we can confirm that we are able to reach the domain by using: realm discover DOMAIN
+<img src="/imgs/realm_discover.png"/>
+Now we can join the domain and confirm that we have joined using the following commands: 'sudo realm join -U "DOMAIN+ADMIN" "DOMAIN"'
+& 'realm list'
+<img src="/imgs/realm_join.png"/>
+Next we need to reconfigure the mkhomedir file in /usr/share/pam-configs so that when AD users login they get their own individual home directory:
+<img src="/imgs/change_pam.png"/>
+Then we can restart pam with 'sudo pam-auth-update' and we'll be greeted with the window below ensure you select [*] Create home directory on login:
+<img src="/imgs/pam-auth-update.png"/>
+Lastly we'll restart the System Security Services Daemon or sssd and confirm we can view users within AD:
+<img src="/imgs/sssd_restart.png"/>
+</p>
+<b><center>And We're All Set</center></b>
   
 <br />
 <h2>Languages and Utilities Used</h2>
