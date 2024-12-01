@@ -46,7 +46,7 @@ Then we can restart pam with 'sudo pam-auth-update' and we'll be greeted with th
 Lastly we'll restart the System Security Services Daemon or sssd and confirm we can view users within AD:
 <img src="/imgs/sssd_restart.png"/>
 </p>
-<b><center>And We're All Set</center></b>
+<b>And We're All Set</b>
   
 <br />
 <h2>Languages and Utilities Used</h2>
