@@ -43,8 +43,12 @@ Next we need to reconfigure the mkhomedir file in /usr/share/pam-configs so that
 <img src="/imgs/change_pam.png"/>
 Then we can restart pam with 'sudo pam-auth-update' and we'll be greeted with the window below ensure you select [*] Create home directory on login:
 <img src="/imgs/pam-auth-update.png"/>
-Lastly we'll restart the System Security Services Daemon or sssd and confirm we can view users within AD:
+Now we'll restart the System Security Services Daemon or sssd and confirm we can view users within AD:
 <img src="/imgs/sssd_restart.png"/>
+Next, we need to allow domain users to ssh into this system. We'll do that with: 'sudo realm permit --all'. We can also configure sudo for domain admins by creating a new suders file:
+<img src="/imgs/allow_ssh.png"/>
+Finally we can test ssh by logging in as a domain user onto the localhost
+<img src="/imgs/testing_ssh.png"/>
 </p>
 <b>And We're All Set</b>
   
