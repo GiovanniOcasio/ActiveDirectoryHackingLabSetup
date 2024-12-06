@@ -18,7 +18,7 @@ Run 'ip addr show' once more and it should look like this:
 Once this is done you can use: 'dchpcd network_interface' to request an new IP Address <br />
 Now let's configure a static IP address by editing the yaml file in /etc/netplan/ <br />
 It should look something like this the addresses portion should contain your perferred IP address and subnet mask <br />
-The via portion under route should contain your defaul gateway IP address:
+The via portion under route should contain your default gateway IP address:
 <img src="/imgs/netplan.png"/>
 Now we can run 'sudo netplan apply' to apply the changes and 'ip a' to confirm that they have been made:
 <img src="/imgs/netplan_apply.png"/>
